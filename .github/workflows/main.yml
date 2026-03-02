@@ -1,0 +1,27 @@
+name: Build Angular
+
+on:
+ push:
+   branches: [ main ]
+
+jobs:
+  build-App:
+   runs-on: ubuntu-latest
+
+   steps:
+     - uses: actions/checkout@v6.0.2
+
+     - name: setup-nodejs
+       uses: actions/setup-node@v6.2.0
+       with:
+         node-version: 22.x
+
+      - name: install dependencies
+        run: npm install
+
+      - name: build
+        run: npm run build
+
+      - name: deploy
+        run: echo "Deployed"
+        
